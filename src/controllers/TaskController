@@ -25,7 +25,7 @@ const database = require ('../database/connection')
         }
 
         listarUmaTarefa(request,response){
-            const id = request.params
+            const {id} = request.params
             database.select("*").table("tasks").where({id:id}).then(tarefa=>{
                 response.json(tarefa)
             }).catch(error=>{
@@ -34,10 +34,10 @@ const database = require ('../database/connection')
         }
 
         atualizarTarefa(request,response){
-            const id = request.params
+            const {id} = request.params
             const {descricao} = request.body
 
-            database.uptade({descricao:descricao}).table("tasks").where({id:id}).then(data=>{
+            database.update({descricao:descricao}).table("tasks").where({id:id}).then(data=>{
                 response.json({message:"Tarefa atualizada"})
             }).catch(error=>{
                 response.json(error)
@@ -45,7 +45,7 @@ const database = require ('../database/connection')
         }
 
         removerTarefa(request,response){
-            const id = request.params
+            const {id} = request.params
             database.where({id:id}).del().table("tasks").then(data=>{
                 response.json({message:"Tarefa removida"})
             }).catch(error=>{
