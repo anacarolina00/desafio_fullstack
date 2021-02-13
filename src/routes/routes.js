@@ -12,9 +12,9 @@
 
     router.get('/cadclie/:id',CliController.listarUmCli)
 
-    router.put('/atualizar/CadCli/:id',CliController.atualizarCadCli)
+    router.put('/atualizar/cadcli/:id',CliController.atualizarCadCli)
 
-    router.delete('/delete/CadCli/:id',CliController.removerCadCli)
+    router.delete('/delete/cadcli/:id',CliController.removerCadCli)
 
                 //PesController
 
@@ -24,8 +24,8 @@
 
     router.get('/cadpess/:id',PesController.listarUmaPesRel)
 
-    router.put('/atualizar/PesRel/:id',PesController.atualizarPesRel)
+    router.put('/atualizar/pesrel/:id',PesController.atualizarPesRel)
 
-    router.delete('/delete/PesRel/:id',PesController.removerPesRel)
+    router.delete('/delete/pesrel/:id',PesController.removerPesRel)
 
     module.exports = router

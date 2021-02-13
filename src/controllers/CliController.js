@@ -1,4 +1,3 @@
-const {response} = require('express')
 const database = require('../database/connection')
 
     class CliController {
@@ -6,11 +5,11 @@ const database = require('../database/connection')
     const {cnpj, nome_cli, data_fun, tipo, tel_cli, email, cep, logradouro, num, bairro,
         cidade, estado, senha, fk_nome_pes} = request.body
 
-    console.log({cnpj, nome_cli, data_fun, tipo, tel_cli, email, cep, logradouro, num, bairro,
-        cidade, estado, senha, fk_nome_pes})
+    console.log(cnpj, nome_cli, data_fun, tipo, tel_cli, email, cep, logradouro, num, bairro,
+        cidade, estado, senha, fk_nome_pes)
 
-    database.insert(cnpj, nome_cli, data_fun, tipo, tel_cli, email, cep, logradouro, num, bairro,
-        cidade, estado, senha, fk_nome_pes).table("cliente").then(data=>{
+    database.insert({cnpj, nome_cli, data_fun, tipo, tel_cli, email, cep, logradouro, num, bairro,
+        cidade, estado, senha, fk_nome_pes}).table("cliente").then(data=>{
                 console.log(data)
                 response.json({ message: "Cliente cadastrado com sucesso!!" })
             }).catch(error=>{
@@ -33,7 +32,7 @@ const database = require('../database/connection')
         response.json(cadclie)
     }).catch(error=>{
         console.log(error)
-    });
+    })
     }
 
     atualizarCadCli(request, response) {
