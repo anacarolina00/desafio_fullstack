@@ -25,7 +25,7 @@ const database = require('../database/connection')
 
     listarUmaPesRel(request, response) {
     const {id} = request.params
-    database.select("*").table("pessoa").where({ id: id }).then(cadpess=>{
+    database.select("*").table("pessoa").where({ idpessoa: id }).then(cadpess=>{
         response.json(cadpess)
     }).catch(error=>{
         console.log(error)
@@ -37,7 +37,7 @@ const database = require('../database/connection')
     const { cpf, nome_pes, data_nasc, tel_pes, email } = request.body
 
     database.update({ cpf:cpf, nome_pes:nome_pes, data_nasc:data_nasc, tel_pes:tel_pes, email:email
-    }).table("pessoa").where({ id: id }).then(data=>{
+    }).table("pessoa").where({ idpessoa: id }).then(data=>{
         response.json({ message: "Cadastro de Pessoa Relacionada atualizado com sucesso!!" })
     }).catch(error=>{
         response.json(error)
@@ -46,7 +46,7 @@ const database = require('../database/connection')
 
     removerPesRel(request, response) {
     const {id} = request.params
-    database.where({ id: id }).del().table("pessoa").then(data=>{
+    database.where({ idpessoa: id }).del().table("pessoa").then(data=>{
         response.json({ message: "Pessoa Relacionada removida com sucesso!!" })
     }).catch(error=>{
         response.json(error)

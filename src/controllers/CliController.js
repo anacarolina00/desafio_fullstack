@@ -28,7 +28,7 @@ const database = require('../database/connection')
 
     listarUmCli(request, response) {
     const {id} = request.params
-    database.select("*").table("cliente").where({ id: id }).then(cadclie=>{
+    database.select("*").table("cliente").where({ idcliente: id }).then(cadclie=>{
         response.json(cadclie)
     }).catch(error=>{
         console.log(error)
@@ -42,7 +42,7 @@ const database = require('../database/connection')
 
     database.update({cnpj:cnpj, nome_cli:nome_cli, data_fun:data_fun, tipo:tipo, tel_cli:tel_cli,
         email:email, cep:cep, logradouro:logradouro, num:num, bairro:bairro, cidade:cidade,
-        estado:estado, senha:senha, fk_nome_pes:fk_nome_pes}).table("cliente").where({ id: id }).then(data=>{
+        estado:estado, senha:senha, fk_nome_pes:fk_nome_pes}).table("cliente").where({ idcliente: id }).then(data=>{
         response.json({ message: "Cadastro Atualizado com sucesso!!" })
     }).catch(error=>{
         response.json(error)
@@ -51,7 +51,7 @@ const database = require('../database/connection')
 
     removerCadCli(request, response) {
     const {id} = request.params
-    database.where({ id: id }).del().table("cliente").then(data=>{
+    database.where({ idcliente: id }).del().table("cliente").then(data=>{
         response.json({ message: "Cliente removido com sucesso!!" })
     }).catch(error=>{
         response.json(error)
