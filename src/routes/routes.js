@@ -12,6 +12,8 @@
 
     router.get('/cadclie/:id',CliController.listarUmCli)
 
+    router.post("/login",CliController.login)
+
     router.put('/atualizar/cadcli/:id',CliController.atualizarCadCli)
 
     router.delete('/delete/cadcli/:id',CliController.removerCadCli)

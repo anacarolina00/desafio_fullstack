@@ -35,6 +35,15 @@ const database = require('../database/connection')
     })
     }
 
+    login(request, response) {
+    const {email, senha} = request.body
+    database.select("*").table("cliente").where({ email: email, senha:senha }).then(login=>{
+        response.json(login)
+    }).catch(error=>{
+        console.log(error)
+    })
+    }
+
     atualizarCadCli(request, response) {
     const {id} = request.params
     const {cnpj, nome_cli, data_fun, tipo, tel_cli, email, cep, logradouro, num, bairro,
